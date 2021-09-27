@@ -8,6 +8,7 @@
 ## Deployment on SandBox 
 
 * [SandBoxLab31](https://22yd7.csb.app/)
+* [SandBoxLab32](https://7n5z8.csb.app/)
 
 ## UML :
 
