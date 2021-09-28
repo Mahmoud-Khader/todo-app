@@ -1,31 +1,44 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ToDo from './components/todo/todo';
-// import SettingsContext from './context/context';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SettingsForm from './context/settingForm'
 import Header from './components/header/Header';
 import '@blueprintjs/core/lib/css/blueprint.css'
 import '@blueprintjs/icons/lib/css/blueprint-icons.css'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
+import Login from './components/login/login';
+import Auth from './components/login/auth';
+import LoginProvider from './context/loginContext';
+import SettingsContext from './context/context';
 
 
 function App() {
   return (
     <>
-      <Router>
-        <Header />
-        <Switch>
-          {/* <SettingsContext> */}
-            <Route exact path='/'>
-              <ToDo />
-            </Route>
-            <Route exact path='/settingsForm'>
-              <SettingsForm />
-            </Route>
-          {/* </SettingsContext> */}
-        </Switch>
-      </Router>
+              <SettingsContext>
+      <LoginProvider>
+        <Login />
+        <Router>
+          <Header />
+          <Switch>
+              <Route exact path='/'>
+            <Auth capability="read">
+                <ToDo />
+            </Auth >
+              </Route>
+            {/* <Auth capability="read"> */}
+              <Route exact path='/settingsForm'>
+                <SettingsForm />
+              </Route>
+            {/* </Auth> */}
+
+          </Switch>
+
+
+        </Router>
+      </LoginProvider>
+               </SettingsContext>
     </>
   );
 }
