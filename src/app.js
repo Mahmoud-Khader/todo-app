@@ -22,16 +22,16 @@ function App() {
         <Router>
           <Header />
           <Switch>
-              <Route exact path='/'>
             <Auth capability="read">
+              <Route exact path='/'>
                 <ToDo />
-            </Auth >
               </Route>
-            {/* <Auth capability="read"> */}
+            {/* <Auth capability="create"> */}
               <Route exact path='/settingsForm'>
                 <SettingsForm />
               </Route>
             {/* </Auth> */}
+            </Auth >
 
           </Switch>
 

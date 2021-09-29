@@ -16,10 +16,6 @@ export default function Login() {
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
   const [email, setEmail] = useState('');
-  const [gender, setGender] = useState('');
-  const [adress, setAdress] = useState('');
-  const [phone, setPhone] = useState('');
-  const [age, setAge] = useState('');
   const [role, setRole] = useState('');
 
   const [singupDisplay, setSingupDisplay] = useState(true);
@@ -32,7 +28,7 @@ export default function Login() {
 
   const handleSignupSubmit = (event) => {
     event.preventDefault();
-    context.signup(username, password, firstname, lastname, email, gender, adress, phone,age, role)
+    context.signup(username, password, firstname, lastname, email, role)
   };
 
   return (
@@ -91,33 +87,9 @@ export default function Login() {
               <InputGroup onChange={(e) => setEmail(e.target.value)} placeholder="email" type="text" name="email" />
             </label>
             <br />
-
-            <label>
-              <span>Gender</span>
-              <InputGroup onChange={(e) => setGender(e.target.value)} placeholder="gender" type="text" name="gender" />
-            </label>
-            <br />
-
-            <label>
-              <span>Adress</span>
-              <InputGroup onChange={(e) => setAdress(e.target.value)} placeholder="adress" type="text" name="adress" />
-            </label>
-            <br />
-
-            <label>
-              <span>Phone Number</span>
-              <InputGroup onChange={(e) => setPhone(e.target.value)} placeholder="phone" type="number" name="phone" />
-            </label>
-            <br />
-
-            <label>
-              <span>Age</span>
-              <InputGroup onChange={(e) => setAge(e.target.value)} placeholder="age" type="number" name="age" />
-            </label>
-            <br />
             <label>
               <span>Role</span>
-              <InputGroup onChange={(e) => setRole(e.target.value)} placeholder="role = [admin,user,manager,driver]" type="text" name="username" />
+              <InputGroup onChange={(e) => setRole(e.target.value)} placeholder="role = [user, editor, admin]" type="text" name="username" />
             </label>
             <br />
             <label>

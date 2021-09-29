@@ -6,16 +6,19 @@ import jwt from 'jsonwebtoken';
 import cookie from 'react-cookies';
 
 export const LoginContext = React.createContext();
-const API = 'https://spacefood.herokuapp.com';
+const API = 'https://todo-backend-5.herokuapp.com';
 
 export default function LoginProvider(props) {
 
     const [loggedIn, setLoggedIn] = useState(false);
     const [user, setUser] = useState({});
+    const [isUpdated, setIsUpdated] = useState(false);
+    const [token, setToken] = useState(null);
 
     useEffect(() => {
       const cookieToken = cookie.load('token');
       JWToken(cookieToken);
+      setToken(cookieToken)
   }, []);
 
     const login = async (username, password) => {
@@ -33,7 +36,7 @@ export default function LoginProvider(props) {
         }
     }
 
-    const signup = async (userName, passWord, firstname , lastname , email,gender,adress,phone,age, role) => {
+    const signup = async (userName, passWord, firstname , lastname , email, role) => {
         try {
           let obj = {
             username: userName,
@@ -41,10 +44,6 @@ export default function LoginProvider(props) {
             lastname: lastname,
             password: passWord,
             email: email,
-            gender:gender,
-            adress:adress,
-            phone:phone,
-            age:age,
             role: role
         }
         console.log(obj);
@@ -79,7 +78,7 @@ export default function LoginProvider(props) {
    
 
     const can = (capability) => {
-      console.log(user);
+    //   console.log(user);
         return user?.capabilities?.includes(capability);
     };
 
@@ -89,7 +88,10 @@ export default function LoginProvider(props) {
         login,
         logout,
         user,
-        can
+        can,
+        token,
+        setIsUpdated,
+        isUpdated
     }
 
     return (
